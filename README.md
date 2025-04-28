@@ -1,54 +1,60 @@
-# Workflow Animation Component
+# AI Workflow Animation
 
-A lightweight, professional animated component that showcases how an AI system learns from workflows. This component is designed to be embedded in a Carrd landing page via iframe.
+A lightweight, professional animated component that showcases how an AI system learns from workflows. Designed to be embedded in a Carrd landing page via iframe.
 
 ## Features
 
-- Rotating set of task headers with smooth transitions
-- Sequential appearance of workflow steps with connecting lines
-- Soft highlighting of active nodes and subtle pulse effect for completed nodes
-- Clean, professional design with minimal bundle size
-- Easily customizable timing, colors, and workflow data
+- Clean, professional animations using Framer Motion
+- Rotating set of workflow tasks with sequentially appearing nodes
+- Minimal design with soft connecting lines
+- Configurable timing and styling
+- Lightweight implementation for fast loading
 
 ## Getting Started
 
 ### Installation
 
-1. Clone the repository:
-```
-git clone https://github.com/yourusername/workflow-animation.git
-cd workflow-animation
-```
+```bash
+# Clone the repository (if applicable)
+git clone [repository-url]
+cd flingoos-animation
 
-2. Install dependencies:
-```
+# Install dependencies
 npm install
-```
 
-3. Run the development server:
-```
+# Start the development server
 npm run dev
 ```
 
-4. Build for production:
-```
-npm run build
+### Embedding in Carrd
+
+After deploying to Vercel, use the following iframe code in your Carrd site:
+
+```html
+<iframe 
+  src="https://your-deployment-url.vercel.app" 
+  width="100%" 
+  height="500" 
+  frameborder="0" 
+  allow="autoplay; fullscreen" 
+  allowfullscreen
+></iframe>
 ```
 
 ## Customization
 
-### Modifying Workflows
+### Adding or Modifying Workflows
 
-To customize the workflow examples, edit the `src/data/workflows.ts` file:
+To update the workflows, edit the `src/data/workflows.ts` file:
 
 ```typescript
 export const workflows: Workflow[] = [
   {
-    id: 'custom-workflow',
+    id: 'unique-id',
     header: 'Your Workflow Title',
-    steps: [
-      { id: 'step-1', label: 'First Step' },
-      { id: 'step-2', label: 'Second Step' },
+    nodes: [
+      { id: 'node-1', label: 'First Step' },
+      { id: 'node-2', label: 'Second Step' },
       // Add more steps as needed
     ]
   },
@@ -56,57 +62,45 @@ export const workflows: Workflow[] = [
 ];
 ```
 
-### Changing Animation Timing
+### Timing Configuration
 
-Animation timing variables are defined in `src/index.css`:
+You can adjust the timing in the `App.tsx` file:
 
-```css
-:root {
-  --animation-duration: 0.5s;       /* Header fade-in duration */
-  --node-appearance-delay: 1s;      /* Delay before first node appears */
-  --node-appearance-interval: 0.4s; /* Time between node appearances */
-  --full-display-duration: 2s;      /* Time full workflow displays before switching */
-  --transition-duration: 0.8s;      /* Fade transition between workflows */
-}
+```tsx
+<WorkflowAnimation 
+  workflows={workflows} 
+  cycleTime={8}  // Time in seconds for each workflow
+  nodeDelay={0.6}  // Delay between node appearances
+/>
 ```
 
-### Styling Customization
+### Styling
 
-The component uses TailwindCSS for styling. Main colors can be customized in `tailwind.config.js`:
+The component uses TailwindCSS for styling. Main colors and styles can be adjusted in:
 
-```js
-theme: {
-  extend: {
-    colors: {
-      primary: '#3B82F6',   /* Change primary color */
-      secondary: '#E2E8F0', /* Change secondary color */
-      success: '#10B981',   /* Change success color */
-      // Add more custom colors as needed
-    },
-  },
-},
-```
+- `src/index.css` - For CSS variables and global styles
+- Individual component files for specific element styling
 
-## Embedding in Carrd
+## Build for Production
 
-1. Build the project:
-```
+```bash
+# Build the project
 npm run build
+
+# Preview the build
+npm run preview
 ```
 
-2. Deploy to Vercel or your preferred hosting service.
+## Deployment
 
-3. In Carrd, add an Embed element and use the deployed URL as the iframe source:
-```html
-<iframe src="https://your-deployed-url.vercel.app" frameborder="0" width="100%" height="500px"></iframe>
-```
+This project is optimized for deployment to Vercel:
 
-## Optimization Tips
-
-- The component is optimized for minimal bundle size
-- For even smaller files, consider removing unused workflows
-- Adjust transition timing for best performance on lower-end devices
+1. Connect your GitHub repository to Vercel
+2. Configure the build settings:
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+3. Deploy
 
 ## License
 
-MIT 
+[Your license information]

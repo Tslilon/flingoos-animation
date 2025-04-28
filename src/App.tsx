@@ -1,28 +1,26 @@
-import React from 'react'
-import WorkflowAnimation from './components/WorkflowAnimation'
+import { WorkflowAnimation } from './components/WorkflowAnimation'
+import { workflows } from './data/workflows'
 import './App.css'
 
 function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
-      <div className="w-full max-w-4xl">
-        <header className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-gray-800">
-            Learning from Workflows
-          </h1>
-          <p className="text-gray-600 mt-2">
-            Our AI system learns from your workflows to automate and optimize processes.
-          </p>
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      <div className="w-full max-w-xl bg-white rounded-xl shadow-lg overflow-hidden">
+        <header className="bg-gradient-to-r from-blue-500 to-indigo-600 py-6 px-8">
+          <h1 className="text-white text-xl font-medium">AI Learning from Workflows</h1>
+          <p className="text-blue-100 text-sm mt-2">See how our system learns and automates your processes</p>
         </header>
         
-        <WorkflowAnimation />
-        
-        <footer className="text-center mt-8 text-sm text-gray-500">
-          <p>Workflow animation demonstration — Powered by AI</p>
-        </footer>
+        <main className="p-6">
+          <WorkflowAnimation 
+            workflows={workflows} 
+            cycleTime={8} 
+            nodeDelay={0.6} 
+          />
+        </main>
       </div>
     </div>
   )
 }
 
-export default App 
+export default App
